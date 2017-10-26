@@ -31,7 +31,7 @@
         <div class="content">
           <div class="container">
             <div class="row">
-              <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+              <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3" @submit.prevent="login">
                 <form method="#" action="#">
                   <div class="card login-card" data-background="color" data-color="blue">
                     <div class="card-header">
@@ -48,7 +48,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-center">
-                      <el-button class="btn btn-fill btn-wd " @click="login" :loading="loading">
+                      <el-button native-type="submit" class="btn btn-fill btn-wd" @click="login" :loading="loading">
                         <span v-if="error" class="text-danger">{{buttonText}}</span>
                         <span v-else>{{buttonText}}</span>
                       </el-button>

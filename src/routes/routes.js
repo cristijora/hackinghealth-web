@@ -54,6 +54,7 @@ const routes = [
   lockPage,
   {
     path: '/admin',
+    meta: {requiresAuth: true},
     component: DashboardLayout,
     redirect: '/admin/overview',
     children: [

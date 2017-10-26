@@ -51,17 +51,6 @@
   }
 }
 
-.el-select .el-input {
-  &:hover {
-    .el-input__icon,
-    input {
-      &::placeholder {
-        color: white;
-      }
-      color: white;
-    }
-  }
-}
 .el-select-dropdown {
   border-radius:10px;
 }

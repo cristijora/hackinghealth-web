@@ -24,12 +24,17 @@
             <li><a href="#">Notification 4</a></li>
             <li><a href="#">Another notification</a></li>
           </drop-down>
+          <li>
+            <a style="cursor: pointer;" @click="logout">Logout</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
 <script>
+  import api from 'src/api'
+
   export default {
     data () {
       return {
@@ -37,6 +42,10 @@
       }
     },
     methods: {
+      async logout () {
+        await api.logout()
+        this.$router.push('/login')
+      },
       capitalizeFirstLetter (string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
       },

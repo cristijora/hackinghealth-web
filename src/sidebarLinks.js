@@ -1,6 +1,6 @@
 export default [
   {
-    name: 'Dashboard',
+    name: 'Children',
     icon: 'ti-panel',
     path: '/admin/overview',
   },
