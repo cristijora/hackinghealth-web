@@ -1,5 +1,5 @@
 <template>
-  <div class="checkbox" :class="inlineClass">
+  <div class="checkbox checkbox-default" :class="inlineClass">
     <input :id="cbId"
            type="checkbox"
            :disabled="disabled"

@@ -1,64 +1,62 @@
 <template>
   <div class="col-md-12">
-    <time-line>
-      <time-line-item class="timeline-inverted" badgeType="danger" badgeIcon="ti-gallery">
-        <span slot="header" class="label label-danger">Some title</span>
-        <p slot="body">
-          Wifey made the best Father's Day meal ever. So thankful so happy so blessed. Thank you for making my family We just had fun with the “future” theme !!!   It was a fun night all together ... The always rude Kanye Show at 2am Sold Out Famous viewing @ Figueroa and 12th in downtown.</p>
+    <h4>Timeline</h4>
 
-        <h6 slot="footer">
-          <i class="ti-time"></i>
-          11 hours ago via Twitter
-        </h6>
-      </time-line-item>
+    <el-steps :active="1"
+              finish-status="success"
+              process-status="finish" >
+      <el-step title="S-a nascut Sofia"></el-step>
+      <el-step title="3 months"></el-step>
+      <el-step title="6 months"></el-step>
+      <el-step title="1 year"></el-step>
+      <el-step title="2 years"></el-step>
+    </el-steps>
 
-      <time-line-item badgeType="success" badgeIcon="ti-check-box">
-        <span slot="header" class="label label-success">Another Title</span>
-        <p slot="body">
-          Thank God for the support of my wife and real friends. I also wanted to point out that it’s the first album to go number 1 off of streaming!!! I love you Ellen and also my number one design rule of anything I do from shoes to music to homes is that Kim has to like it....</p>
-      </time-line-item>
-
-      <time-line-item class="timeline-inverted" badgeType="info" badgeIcon="ti-credit-card">
-        <span slot="header" class="label label-success">Another Title</span>
-        <div slot="body">
-          <p>
-            Called I Miss the Old Kanye That’s all it was Kanye And I love you like Kanye loves Kanye Famous viewing @ Figueroa and 12th in downtown LA 11:10PM</p>
-          <p>
-            What if Kanye made a song about Kanye Royère doesn't make a Polar bear bed but the Polar bear couch is my favorite piece of furniture we own It wasn’t any Kanyes Set on his goals Kanye</p>
-          <hr>
-          <drop-down class="btn-group">
-            <button slot="title" href="#" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-              <i class="ti-settings"></i> <span class="caret"></span>
-            </button>
-            <li><a href="#action">Action</a></li>
-            <li><a href="#action">Another action</a></li>
-            <li><a href="#here">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#link">Separated link</a></li>
-          </drop-down>
+      <Card class="col-xs-12">
+        <div slot="header">
+          <div  class="icon-big text-center icon-danger">
+            <h5 class="text-danger"><i class="ti-announcement"></i> Atentionare vaccin</h5>
+          </div>
         </div>
-      </time-line-item>
+        <h5 class="text-info">De acum toate vaccinurile se vor efectua la medicul de familie. E timpul sa-l suni sa te programezi la vaccinuri.</h5>
 
-      <time-line-item badgeType="warning" badgeIcon="ti-gallery">
-        <span slot="header" class="label label-warning">Another Title</span>
-        <p slot="body">
-          Tune into Big Boy's 92.3 I'm about to play the first single from Cruel Winter Tune into Big Boy's 92.3 I'm about to play the first single from Cruel Winter also to Kim’s hair and makeup Lorraine jewelry and the whole style squad at Balmain and the Yeezy team. Thank you Anna for the invite thank you to the whole Vogue team</p>
-      </time-line-item>
+      </Card>
 
-    </time-line>
+    <Card class="col-xs-12">
+      <div slot="header">
+        <h4 class="text-danger"><i class="fa fa-user-md "></i>Vaccinare</h4>
+      </div>
+      <div class="col-xs-12 vaccine">
+        <checkbox :value="true">EUVAX</checkbox>
+        <checkbox :value="true">DTPa</checkbox>
+        <checkbox :value="true">VPI</checkbox>
+        <checkbox :value="true">Hib</checkbox>
+      </div>
+    </Card>
+
   </div>
 
 </template>
 <script>
-  import TimeLine from './../Dashboard/Stats/TimeLine.vue'
-  import TimeLineItem from './../Dashboard/Stats/TimeLineItem.vue'
+  import Vue from 'vue'
+  import Card from 'src/components/UIComponents/Cards/Card'
+  import Checkbox from 'src/components/UIComponents/Inputs/Checkbox'
+  import {Steps, Step} from 'element-ui'
+  Vue.use(Step)
+  Vue.use(Steps)
 
   export default {
     components: {
-      TimeLine,
-      TimeLineItem
+      Card,
+      Checkbox
     }
   }
 </script>
-<style>
+<style lang="scss">
+  @import "~assets/sass/paper/variables";
+  .vaccine .checkbox {
+    font-size: 22px;
+    font-weight: 700;
+    color: $danger-color;
+  }
 </style>
