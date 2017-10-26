@@ -50,17 +50,17 @@
       },
       backgroundColor: {
         type: String,
-        default: 'black',
+        default: 'brown',
         validator: (value) => {
-          let acceptedValues = ['white', 'brown', 'black']
+          let acceptedValues = ['white', 'brown', 'black', 'darkblue']
           return acceptedValues.indexOf(value) !== -1
         }
       },
       activeColor: {
         type: String,
-        default: 'success',
+        default: 'default',
         validator: (value) => {
-          let acceptedValues = ['primary', 'info', 'success', 'warning', 'danger']
+          let acceptedValues = ['default', 'primary', 'info', 'success', 'warning', 'danger']
           return acceptedValues.indexOf(value) !== -1
         }
       },

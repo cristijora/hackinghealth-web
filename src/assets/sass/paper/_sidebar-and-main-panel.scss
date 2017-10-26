@@ -294,7 +294,7 @@
     @include sidebar-background-color($black-background-color, $white-color);
   }
   &[data-background-color="darkblue"] {
-    @include sidebar-background-color($darkblue-background-color, $white-color);
+    @include sidebar-background-color($default-color, $white-color);
   }
 
   &[data-background-color="brown"],
@@ -316,6 +316,9 @@
         }
       }
 
+  }
+  &[data-active-color="default"]{
+    @include sidebar-active-color($default-color);
   }
   &[data-active-color="primary"]{
     @include sidebar-active-color($primary-color);

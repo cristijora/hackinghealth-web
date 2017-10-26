@@ -11,12 +11,18 @@
     "unit:watch": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --watch",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "deploy": "cd dist && git add . && git commit -a -m 'deploy' && git push -f heroku master && cd .. "
+    "deploy": "cd dist && git add . && git commit -a -m 'deploy' && git push -f heroku master && cd .. ",
+    "deploy:build": "npm run build && npm run deploy"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "chartist": "^0.10.1",
     "easy-pie-chart": "^2.1.7",
     "element-ui": "next",
+    "feathers": "^2.2.3",
+    "feathers-authentication-client": "^0.3.3",
+    "feathers-hooks": "^2.1.1",
+    "feathers-rest": "^1.8.0",
     "fullcalendar": "^3.4.0",
     "google-maps": "^3.2.1",
     "jquery": "^3.2.1",
