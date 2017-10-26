@@ -64,6 +64,9 @@
       minimizeSidebar () {
         this.$sidebar.toggleMinimize()
       }
+    },
+    mounted () {
+      this.minimizeSidebar()
     }
   }
 

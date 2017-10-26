@@ -106,7 +106,7 @@
           })
           this.loading = true
           this.error = false
-          this.$router.push('/admin/overview')
+          this.$router.push('/parent/children')
         } catch (e) {
           this.buttonText = e.message
           this.error = true

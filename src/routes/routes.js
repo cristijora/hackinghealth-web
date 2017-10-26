@@ -35,7 +35,7 @@ const routes = [
   {
     path: '/',
     component: DashboardLayout,
-    redirect: '/admin/overview',
+    redirect: '/parent/children',
     children: [
       {
         path: 'calendar',
@@ -53,19 +53,24 @@ const routes = [
   registerPage,
   lockPage,
   {
-    path: '/admin',
+    path: '/parent',
     meta: {requiresAuth: true},
     component: DashboardLayout,
-    redirect: '/admin/overview',
+    redirect: '/parent/children',
     children: [
       {
-        path: 'overview',
-        name: 'Overview',
+        path: 'children',
+        name: 'Children',
         component: Overview
       },
       {
+        path: 'timeline',
+        name: 'TimeLine',
+        component: Calendar
+      },
+      {
         path: 'stats',
-        name: 'Stats',
+        name: 'Statistics',
         component: Stats
       }
     ]
