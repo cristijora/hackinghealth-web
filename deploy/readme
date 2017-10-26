@@ -1,0 +1,14 @@
+This folder contains 3 files necessary for deployments on heroku.
+These should be copied in the dist folder in order for the deployment to work.
+
+-server.js is a node server that will serve the application and handle routing
+-package.json is needed in order to specify the necessary dependencies which in this case are: connect-history-api-fallback (route handling)
+-Procfile is a heroku deployment file which specifies the commands to be executed so the server can start
+
+In order to make a deploy simply initialize a git repository inside the dist folder with the following origin: https://git.heroku.com/kairy.git
+git remote add origin heroku https://git.heroku.com/kairy.git
+Then you should be able to commit and trigger deploys based on git pushes
+
+git add . (add all files)
+git commit -m "Your commit message"
+git push heroku master (This will trigger a deployment)

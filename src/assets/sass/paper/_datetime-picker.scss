@@ -1,0 +1,32 @@
+@import "variables";
+.el-date-picker {
+  .el-date-table td.current:not(.disabled),
+  .el-month-table td.current:not(.disabled) .cell,
+  .el-year-table td.current:not(.disabled) .cell,
+  .el-date-table td.end-date, .el-date-table td.start-date{
+    background-color: $info-color !important;
+    border-radius: 16px;
+    &:before{
+      border:none;
+    }
+  }
+  .el-year-table td .cell:hover,
+  .el-month-table td .cell:hover,
+  .el-date-table td.available:hover {
+    background-color: $light-gray !important;
+    border-radius: 50%;
+  }
+  .el-time-panel__content::after, .el-time-panel__content::before{
+    background-color: $info-color !important;;
+  }
+}
+
+.el-time-panel__content::after, .el-time-panel__content::before{
+  background-color: $info-color;
+}
+
+.el-date-editor .el-input__inner{
+  &:focus{
+    border-color: $info-color;
+  }
+}

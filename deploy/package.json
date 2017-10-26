@@ -1,0 +1,11 @@
+{
+  "name": "techfest",
+  "version": "1.0.0",
+  "description": "techfest baking app",
+  "author": "Cristian Jora",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express connect-history-api-fallback"
+  }
+}
+
