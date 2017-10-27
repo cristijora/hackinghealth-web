@@ -6,10 +6,10 @@
               finish-status="success"
               process-status="finish">
       <el-step title="S-a nascut Sofia"></el-step>
-      <el-step title="3 months"></el-step>
-      <el-step title="6 months"></el-step>
-      <el-step title="1 year"></el-step>
-      <el-step title="2 years"></el-step>
+      <el-step title="1-3 luni"></el-step>
+      <el-step title="3-6 luni"></el-step>
+      <el-step title="6-12 luni"></el-step>
+      <el-step title="1-2 ani"></el-step>
     </el-steps>
 
     <Card class="col-xs-12">
@@ -29,7 +29,7 @@
     <div class="col-sm-6 col-xs-12">
       <Card class="col-xs-12">
         <div slot="header">
-          <h4 class="text-danger"><i class="fa fa-user-md "></i>Vaccinare</h4>
+          <h4 class="text-danger"><i class="fa fa-user-md "></i>Investigatii si Vaccinare</h4>
         </div>
         <Analize :weeks="weeks" :child-data="medicale"></Analize>
       </Card>
@@ -37,7 +37,7 @@
     <div class="col-sm-6 col-xs-12">
       <Card class="col-xs-12">
         <div slot="header">
-          <h4 class="text-danger"><i class="fa fa-user-md "></i>Vaccinare</h4>
+          <h4 class="text-success"><i class="fa fa-child"></i>Comportament</h4>
         </div>
         <Analize :weeks="weeksDezvoltare" :child-data="dezvoltare"></Analize>
       </Card>
@@ -78,7 +78,7 @@
             description: 'BCG(vaccin anti-tuberculoza)',
             notes: '',
             files: [],
-            done: true,
+            done: false,
             date: ''
           },
           {
@@ -140,7 +140,10 @@
             required: false,
             description: 'Privește fata părinților pt scurt timp',
             notes: 'Se uita gingas si la mami si la tati',
-            files: [],
+            files: [{
+              name: 'privire.jpeg',
+              url: 'https://assets.babycenter.com/ims/2016/10/iStock_43693432_4x3.jpg'
+            }],
             done: true,
             date: new Date()
           },

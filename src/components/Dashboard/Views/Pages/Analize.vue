@@ -8,17 +8,25 @@
           </el-step>
 
           <div class="row timeline-row">
-            <el-tooltip v-for="data in filterByWeek(weekData.week)"
-                        :key="data.name"
-                        class="item" effect="light"
-                        :content="data.description"
-                        placement="top-start">
+            <div  v-for="data in filterByWeek(weekData.week)"
+                  :key="data.name">
+              <el-popover
+                :ref="data.name"
+                title="Title"
+                width="200"
+                trigger="hover"
+                content="this is content, this is content, this is content"
+                placement="top-start">
+
+              </el-popover>
+
               <el-button :type="getType(data.done, weekData.status)"
-                         plain @click="openDialog(data)">{{shortName(data.name)}}
+                         v-popover="data.name"
+                         plain @click="openDialog(data)">
+                {{shortName(data.name)}}
               </el-button>
+            </div>
 
-
-            </el-tooltip>
           </div>
         </div>
 
@@ -29,16 +37,15 @@
 
       </div>
       <el-dialog
-        :title="activeData ===null ? '' : activeData.name"
         :visible.sync="dialogVisible"
         append-to-body
         center>
+        <h4 slot="title" :class="getTextClass(activeData)">
+          {{activeData ===null ? '' : activeData.name}}
+        </h4>
         <el-form v-if="activeData!==null" label-position="top">
-          <el-form-item v-if="activeData.required">
-            <label slot="label" class="text-danger">Atentie!</label>
-            <div class="icon-big text-center icon-danger">
-              <i class="ti-announcement"></i>Ss
-            </div>
+          <el-form-item v-if="activeData.required && !activeData.done">
+            <h4 class="text-danger"><i class="fa fa-exclamation"></i> Obligatoriu</h4>
           </el-form-item>
           <el-form-item>
             <label slot="label" class="text-danger">Descriere</label>
@@ -61,10 +68,8 @@
               action="https://jsonplaceholder.typicode.com/posts/"
               :on-preview="handlePreview"
               :on-remove="handleRemove"
-              multiple
-              :limit="3"
-              :on-exceed="handleExceed"
-              :file-list="fileList">
+              :file-list="activeData.files"
+              list-type="picture">
               <el-button size="small" type="primary">Click to upload</el-button>
               <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
             </el-upload>
@@ -89,7 +94,10 @@
 
 </template>
 <script>
+  import ElPopover from "element-ui/packages/popover/src/main";
+
   export default {
+    components: {ElPopover},
     props: ['weeks', 'childData'],
     data () {
       return {
@@ -117,6 +125,12 @@
         }
         return btnStatus
       },
+      getTextClass (activeData) {
+        if (activeData !== null) {
+          return activeData.done ? 'text-success' : 'text-danger'
+        }
+        return ''
+      },
       openDialog (data) {
         this.activeData = data
         this.dialogVisible = true
@@ -136,9 +150,11 @@
 
 <style lang="scss">
   @import '~assets/sass/paper/variables';
-  .el-upload__input{
+
+  .el-upload__input {
     display: none !important;
   }
+
   .el-tooltip__popper.is-light {
     border: 1px solid $default-color;
   }
@@ -180,6 +196,16 @@
 
     .el-button {
       width: 110px;
+    }
+  }
+  @media (max-width: $screen-md) {
+    .el-dialog {
+      width: 80%;
+    }
+  }
+  @media (max-width: 480px) {
+    .el-dialog {
+      width: 95%;
     }
   }
 </style>
