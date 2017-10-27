@@ -10,17 +10,20 @@ import App from './App.vue'
 import GlobalComponents from './gloablComponents'
 import GlobalDirectives from './globalDirectives'
 import SideBar from './components/UIComponents/SidebarPlugin'
+import Element from 'element-ui'
 import api from 'src/api'
 // router setup
 import routes from './routes/routes'
 
 // library imports
 
+import './assets/sass/element-colors.scss'
 import './assets/sass/paper-dashboard.scss'
 import './assets/sass/demo.scss'
 
 import sidebarLinks from './sidebarLinks'
 // plugin setup
+Vue.use(Element)
 Vue.use(VueRouter)
 Vue.use(GlobalDirectives)
 Vue.use(GlobalComponents)

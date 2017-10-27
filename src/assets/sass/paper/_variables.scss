@@ -62,9 +62,9 @@ $warning-bg:                 #F3BB45 !default;
 $warning-states-color:       darken($warning-color,11%) !default;
 
 
-$danger-color:               #EB5E28 !default;
-$danger-bg:                  #EB5E28 !default;
-$danger-states-color:        #EB5E28 !default;
+$danger-color:               #FF4081 !default;
+$danger-bg:                  #FF4081 !default;
+$danger-states-color:        #FF4081 !default;
 
 
 $link-disabled-color:        #666666 !default;
@@ -382,3 +382,7 @@ $zindex-select-dropdown: 1060 !default; // must be higher than a modal backgroun
 
 //** Placeholder text color
 $input-color-placeholder: #999 !default;
+
+
+
+

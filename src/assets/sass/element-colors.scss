@@ -1,0 +1,11 @@
+// ELEMENT variables
+@import "./paper/variables";
+
+$--color-primary: $default-color;
+$--color-danger: $danger-color;
+$--color-success: $success-color;
+
+/* icon font path, required */
+$--font-path: '../../../node_modules/element-ui/lib/theme-chalk/fonts';
+
+@import "../../../node_modules/element-ui/packages/theme-chalk/src/index";

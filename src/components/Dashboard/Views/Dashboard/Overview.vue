@@ -161,22 +161,9 @@
 </template>
 <script>
   import api from 'src/api'
-  import Vue from 'vue'
-  import {FormItem, Form, DatePicker, Input, InputNumber, Select, Option, Button} from 'element-ui'
-  import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
   import Card from 'src/components/UIComponents/Cards/Card'
   import FgInput from 'src/components/UIComponents/Inputs/formGroupInput'
 
-  Vue.component(CollapseTransition.name, CollapseTransition)
-  Vue.use(Form)
-  Vue.use(FormItem)
-
-  Vue.use(Input)
-  Vue.use(Select)
-  Vue.use(Option)
-  Vue.use(InputNumber)
-  Vue.use(Button)
-  Vue.use(DatePicker)
   const initialChildInfo = {
     name: '',
     birthDate: '2017-10-26',

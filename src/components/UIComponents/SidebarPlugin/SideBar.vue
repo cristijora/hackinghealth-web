@@ -6,13 +6,13 @@
         -->
     <!-- -->
     <div class="logo">
-      <a class="simple-text logo-mini" href="https://www.creative-tim.com/product/vue-paper-dashboard-pro">
+      <a class="simple-text logo-mini" href="">
           <div class="logo-img">
               <img :src="logo" alt="">
           </div>
       </a>
 
-      <a class="simple-text logo-normal" href="https://www.creative-tim.com/vue-paper-dashboard-pro">
+      <a class="simple-text logo-normal" href="">
           {{ title }}
       </a>
     </div>
@@ -66,7 +66,7 @@
       },
       logo: {
         type: String,
-        default: 'static/img/vue-logo.png'
+        default: 'static/img/logo.png'
       },
       sidebarLinks: {
         type: Array,
