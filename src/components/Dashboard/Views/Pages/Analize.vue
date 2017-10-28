@@ -8,25 +8,15 @@
           </el-step>
 
           <div class="row timeline-row">
-            <div  v-for="data in filterByWeek(weekData.week)"
-                  :key="data.name">
-              <el-popover
-                :ref="data.name"
-                title="Title"
-                width="200"
-                trigger="hover"
-                content="this is content, this is content, this is content"
-                placement="top-start">
-
-              </el-popover>
-
+            <el-tooltip v-for="data in filterByWeek(weekData.week)"
+                        :key="data.name"
+                        class="item" effect="light"
+                        :content="data.description"
+                        placement="top-start">
               <el-button :type="getType(data.done, weekData.status)"
-                         v-popover="data.name"
-                         plain @click="openDialog(data)">
-                {{shortName(data.name)}}
+                         plain @click="openDialog(data)">{{shortName(data.name)}}
               </el-button>
-            </div>
-
+            </el-tooltip>
           </div>
         </div>
 
@@ -94,10 +84,7 @@
 
 </template>
 <script>
-  import ElPopover from "element-ui/packages/popover/src/main";
-
   export default {
-    components: {ElPopover},
     props: ['weeks', 'childData'],
     data () {
       return {

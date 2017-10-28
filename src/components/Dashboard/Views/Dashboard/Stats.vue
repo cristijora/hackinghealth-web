@@ -36,134 +36,28 @@
 
     <div class="col-xs-12">
       <time-line type="simple">
-        <time-line-item class="timeline-inverted" badge-type="success" badgeIcon="ti-check-box">
-          <span slot="header" class="label label-danger">Investigatii hemoglobina</span>
-          <p slot="body">Am facut investigatii la hemoglobina</p>
-
-          <h6 slot="footer">
-            <i class="ti-time"></i>
-            11 hours ago
-          </h6>
-        </time-line-item>
-
-        <time-line-item class="timeline-inverted" badge-type="warning" badgeIcon="ti-info-alt">
-          <span slot="header" class="label label-info">Investigatii auz</span>
-          <p slot="body">Investigatii auz la medicul de familie. Avem mici probleme cu auzul.</p>
-          <h6 slot="footer">
-            <i class="ti-time"></i>
-            2 days ago
-          </h6>
-        </time-line-item>
-
-        <time-line-item class="timeline-inverted" badge-type="info" badgeIcon="ti-gallery">
-          <span slot="header" class="label label-success">VACCINARE BCG</span>
+        <time-line-item class="timeline-inverted" v-for="item in medicale"
+                        :badge-type="item.done ? 'success': 'danger' " :badgeIcon="item.done ? 'ti-check-box' : 'fa fa-exclamation'">
+          <span slot="header" class="label">{{item.name}}</span>
           <div slot="body">
-            <p>Vaccinare BCG</p>
-            <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/se103124e44fdbcbf/image/id612437c0f180d0e/version/1454157528/image.jpg" width="100" alt="">
-            <hr>
-            <h6 slot="footer">
-              <i class="ti-time"></i>
-              7 days ago
-            </h6>
-          </div>
-        </time-line-item>
+            <div class="text-danger">Descriere</div>
+            <div>{{item.description}}</div>
 
+            <div class="text-danger">Notite</div>
+            <div>{{item.notes}}</div>
+          </div>
+
+          <h6 slot="footer">
+
+            <div v-if="item.date">{{item.date}}</div>
+            <div v-if="!item.done">
+              <div class="text-danger"> <i class="ti-time"></i> Due date</div>
+              <div>saptamana {{item.week}}</div>
+            </div>
+          </h6>
+        </time-line-item>
       </time-line>
     </div>
-    <!--<div class="col-xs-12">-->
-
-      <!--<div class="card card-chat">-->
-        <!--<div class="card-header">-->
-          <!--<h4 class="card-title">Chat</h4>-->
-          <!--<p class="category">With Tania Andrew</p>-->
-        <!--</div>-->
-        <!--<div class="card-content">-->
-          <!--<ol class="chat">-->
-            <!--<li class="other">-->
-              <!--<div class="avatar">-->
-                <!--<img src="static/img/faces/face-2.jpg" alt="crash"/>-->
-              <!--</div>-->
-              <!--<div class="msg">-->
-                <!--<p>-->
-                  <!--Hola!-->
-                  <!--How are you?-->
-                <!--</p>-->
-                <!--<div class="card-footer">-->
-                  <!--<i class="ti-check"></i>-->
-                  <!--<h6>11:20</h6>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</li>-->
-            <!--<li class="self">-->
-              <!--<div class="msg">-->
-                <!--<p>-->
-                  <!--Puff...-->
-                  <!--I'm alright. How are you?-->
-                <!--</p>-->
-                <!--<div class="card-footer">-->
-                  <!--<i class="ti-check"></i>-->
-                  <!--<h6>11:22</h6>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="avatar">-->
-                <!--<img src="static/img/default-avatar.png" alt="crash"/>-->
-              <!--</div>-->
-            <!--</li>-->
-            <!--<li class="other">-->
-              <!--<div class="avatar">-->
-                <!--<img src="static/img/faces/face-2.jpg" alt="crash"/>-->
-              <!--</div>-->
-              <!--<div class="msg">-->
-                <!--<p>-->
-                  <!--I'm ok too!-->
-                <!--</p>-->
-                <!--<div class="card-footer">-->
-                  <!--<i class="ti-check"></i>-->
-                  <!--<h6>11:24</h6>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</li>-->
-            <!--<li class="self">-->
-              <!--<div class="msg">-->
-                <!--<p>-->
-                  <!--Well, it was nice hearing from you.-->
-                <!--</p>-->
-                <!--<div class="card-footer">-->
-                  <!--<i class="ti-check"></i>-->
-                  <!--<h6>11:25</h6>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="no-avatar"></div>-->
-            <!--</li>-->
-            <!--<li class="self">-->
-              <!--<div class="msg">-->
-                <!--<p>-->
-                  <!--OK, bye-bye-->
-                  <!--See you!-->
-                <!--</p>-->
-                <!--<div class="card-footer">-->
-                  <!--<i class="ti-check"></i>-->
-                  <!--<h6>11:25</h6>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="avatar">-->
-                <!--<img src="static/img/default-avatar.png" alt="crash"/>-->
-              <!--</div>-->
-            <!--</li>-->
-          <!--</ol>-->
-          <!--<hr>-->
-          <!--<div class="send-message">-->
-            <!--<div class="avatar">-->
-              <!--<img src="static/img/default-avatar.png" alt="crash"/>-->
-            <!--</div>-->
-            <!--<input class="form-control textarea" type="text" placeholder="Type here!"/>-->
-            <!--<div class="send-button">-->
-              <!--<button class="btn btn-primary btn-fill">Send</button>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
   </div>
 </template>
 <script>
@@ -181,6 +75,59 @@
     },
     data () {
       return {
+        weeks: [{week: 1, status: 'error'}, {week: 6, status: 'success'}, {week: 8, status: 'finish'}],
+        medicale: [
+          {
+            week: 1,
+            name: 'Screening boli metabolice',
+            required: false,
+            description: 'Screening boli metabolice care trebuie facut in prima saptamana',
+            notes: '',
+            files: [],
+            done: false,
+            date: ''
+          },
+          {
+            week: 1,
+            name: 'BCG (vaccin anti-tuberculoza)',
+            required: true,
+            description: 'BCG(vaccin anti-tuberculoza)',
+            notes: '',
+            files: [],
+            done: false,
+            date: ''
+          },
+          {
+            week: 1,
+            name: 'EUVAX(vaccin anti-hepatita B)',
+            required: true,
+            description: 'EUVAX(vaccin anti-hepatita B)',
+            notes: 'Am facut vaccina in Cluj la spitalul public',
+            files: [],
+            done: true,
+            date: ''
+          },
+          {
+            week: 1,
+            name: 'Screening oftalmologic',
+            required: true,
+            description: 'Screening oftalmologic care trebuie facut in prima saptamana',
+            notes: '',
+            files: [],
+            done: true,
+            date: ''
+          },
+          {
+            week: 6,
+            name: 'Bilirubina',
+            required: false,
+            description: 'Bilirubina care trebuie facut in a 2-a saptamana',
+            notes: '',
+            files: [],
+            done: true,
+            date: ''
+          }
+        ],
         salesChart: {
           data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],

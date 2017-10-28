@@ -2,6 +2,9 @@
   <div>
     <div class="">
       <div class="col-xs-12">
+        <h4><span class="text-info">Cod parinte: </span></h4>
+      </div>
+      <div class="col-xs-12">
         <el-button class="btn btn-fill btn-default" style="margin-bottom: 20px;" @click="addChild = !addChild">Add
           child
         </el-button>
