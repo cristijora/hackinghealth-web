@@ -10,7 +10,7 @@
                :title="period.title"></el-step>
     </el-steps>
 
-    <div class="col-xs-12">
+    <div class="col-xs-10 col-xs-offset-1">
       <transition-group name="flip-list" tag="span">
         <card v-for="(item, index) in investigations"
               :key="item._id"
@@ -23,11 +23,14 @@
               <div class="info">
                 <div class="text-white">{{item.name}}</div>
                 <div class="description">
-                    <i>{{item.description}}</i>
+                  <i>{{item.description}}</i>
                 </div>
               </div>
 
             </checkbox>
+          </div>
+          <div slot="footer" v-if="item.files">
+            <span class="text-info fa fa-clock-o"> </span> pana {{getDueDate(item.dueDate)}}
           </div>
         </card>
       </transition-group>
@@ -98,6 +101,14 @@
   import api from 'src/api'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   import Checkbox from 'src/components/UIComponents/Inputs/Checkbox.vue'
+  import {parse, format} from 'date-fns'
+  import roLocale from 'date-fns/locale/ro'
+
+  Date.prototype.addDays = function (days) {
+    var dat = new Date(this.valueOf())
+    dat.setDate(dat.getDate() + days)
+    return dat
+  }
 
   function move(arr, old_index, new_index) {
     while (old_index < 0) {
@@ -123,6 +134,7 @@
     },
     data() {
       return {
+        child: null,
         periods: [],
         investigations: [],
         dialogVisible: false,
@@ -156,12 +168,13 @@
         this.activeData.done = false
         this.dialogVisible = false
       },
-      moveItem() {
+      async moveItem() {
         this.dialogVisible = false
         let length = this.investigations.length - 1
         let from = this.activeData.done ? this.activeIndex : length
         let to = this.activeData.done ? length : this.activeIndex
         move(this.investigations, from, to)
+        var savedData = await api.service('investigations').update(this.activeData._id, this.activeData)
       },
       shortName(name) {
         return `${name.substring(0, 15)}...`
@@ -179,6 +192,10 @@
         }
         return ''
       },
+      getDueDate(days) {
+        return format(parse(this.child.birthDate)
+          .addDays(days), "dddd, D MMMM ", {locale: roLocale})
+      },
       openDialog(data) {
         this.activeData = data
         this.dialogVisible = true
@@ -193,13 +210,15 @@
         this.$message.warning(`The limit is 3, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`)
       }
     },
-    async mounted() {
+    async mounted () {
       const userId = this.$store.state.user.userId
       const periodData = await api.service('periods').find({userId: userId})
       this.periods = periodData.data[0].periods
+      var childData = await api.service('children').find({userId: userId})
+      this.child = childData.data[0]
 
       const investigationData = await api.service('investigations').find({userId: userId})
-      this.investigations = investigationData.data.sort(i => i.done)
+      this.investigations = investigationData.data.sort((a, b) => a.dueDate > b.dueDate)
     }
   }
 </script>
@@ -208,23 +227,38 @@
   @import '~assets/sass/paper/variables';
 
   .card {
-    .checkbox{
+    .checkbox {
       display: flex;
-      align-items: center;
       label {
         display: flex;
         align-items: center;
         &:after {
+          align-self: center;
           top: 8px;
         }
       }
     }
   }
+
   .card .info {
-    .description{
+    .description {
       padding-left: 10px;
     }
   }
+
+  .card[data-background-color="green"] {
+    opacity: 0.5;
+  }
+
+  .el-step.is-horizontal .el-step__line {
+    top: 24px;
+  }
+
+  .el-step__icon {
+    width: 50px;
+    height: 50px;
+  }
+
   .el-upload__input {
     display: none !important;
   }
@@ -258,11 +292,13 @@
   .flip-list-move {
     transition: all 1.5s;
   }
+
   @media (max-width: $screen-md) {
     .el-dialog {
       width: 80%;
     }
   }
+
   @media (max-width: 480px) {
     .el-dialog {
       width: 95%;

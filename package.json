@@ -16,7 +16,11 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
+    "chart.js": "^2.7.1",
     "chartist": "^0.10.1",
+    "chartist-plugin-tooltip": "^0.0.11",
+    "chartist-plugin-tooltips": "^0.0.17",
+    "date-fns": "^1.29.0",
     "easy-pie-chart": "^2.1.7",
     "element-ui": "next",
     "feathers": "^2.2.3",

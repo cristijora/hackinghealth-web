@@ -50,6 +50,8 @@ router.beforeEach(async (to, from, next) => {
     if (!isValid) {
       next(loginRoute)
     } else {
+      var user = await api.passport.verifyJWT(token);
+      store.commit('setUser', user)
       next()
     }
   } else {
