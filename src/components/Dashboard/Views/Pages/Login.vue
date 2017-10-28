@@ -100,10 +100,12 @@
     methods: {
       async login () {
         try {
-          await api.authenticate({
+          var res = await api.authenticate({
             strategy: 'local',
             ...this.addModel
           })
+          var user = await api.passport.verifyJWT(res.accessToken);
+          this.$store.commit('setUser', user)
           this.loading = true
           this.error = false
           this.$router.push('/parent/children')

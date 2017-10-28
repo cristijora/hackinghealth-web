@@ -10,6 +10,11 @@ export default [
     path: '/parent/timeline'
   },
   {
+    name: 'TimeLine2',
+    icon: 'fa fa-calendar-check-o',
+    path: '/parent/timelinev2'
+  },
+  {
     name: 'Statistics',
     icon: 'fa fa-line-chart',
     path: '/parent/stats'

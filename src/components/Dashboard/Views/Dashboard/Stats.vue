@@ -36,7 +36,7 @@
 
     <div class="col-xs-12">
       <time-line type="simple">
-        <time-line-item class="timeline-inverted" v-for="item in medicale"
+        <time-line-item class="timeline-inverted" v-for="item in medicale" :key="item.name"
                         :badge-type="item.done ? 'success': 'danger' " :badgeIcon="item.done ? 'ti-check-box' : 'fa fa-exclamation'">
           <span slot="header" class="label">{{item.name}}</span>
           <div slot="body">

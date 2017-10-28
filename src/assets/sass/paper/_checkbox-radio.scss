@@ -8,20 +8,20 @@
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .checkbox label::before {
   content: "";
   display: inline-block;
   position: absolute;
-  width: 19px;
-  height: 19px;
+  width: 30px;
+  height: 30px;
   left: 0;
   margin-left: -20px;
   border-radius: 3px;
   opacity: .50;
-  background-color: $default-color;
+  background-color: $warning-color;
   transition: opacity 0.2s linear;
 }
 
@@ -44,14 +44,16 @@
   opacity: 0;
   z-index: 1;
   cursor: pointer;
-  width: 19px;
-  height: 19px;
+  width: 30px;
+  height: 30px;
   top: -2px;
 }
 
 .checkbox input[type="checkbox"]:checked + label::after,
 .checkbox input[type="checkbox"]:not(:disabled):hover + label::after{
   font-family: 'FontAwesome';
+  font-size: 27px;
+  font-weight: 300;
   content: "\f00c";
 }
 
@@ -91,8 +93,8 @@
 }
 
 .checkbox-danger input[type="checkbox"]:checked + label::before {
-  background-color: #d9534f;
-  border-color: #d9534f;
+  background-color: $warning-color;
+  border-color: $warning-color;
 }
 
 .checkbox-danger input[type="checkbox"]:checked + label::after {

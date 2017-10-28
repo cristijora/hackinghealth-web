@@ -14,6 +14,7 @@ import Element from 'element-ui'
 import api from 'src/api'
 // router setup
 import routes from './routes/routes'
+import store from './store'
 
 // library imports
 
@@ -60,5 +61,6 @@ router.beforeEach(async (to, from, next) => {
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  store
 })

@@ -5,6 +5,7 @@ import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 import Overview from 'src/components/Dashboard/Views/Dashboard/Overview.vue'
 import Stats from 'src/components/Dashboard/Views/Dashboard/Stats.vue'
 import TimeLinePage from 'src/components/Dashboard/Views/Pages/TimeLinePage.vue'
+import TimeLinePageV2 from 'src/components/Dashboard/Views/Pages/TimelineV2.vue'
 
 import Login from 'src/components/Dashboard/Views/Pages/Login.vue'
 import Register from 'src/components/Dashboard/Views/Pages/Register.vue'
@@ -68,6 +69,11 @@ const routes = [
         path: 'timeline',
         name: 'TimeLine',
         component: TimeLinePage
+      },
+      {
+        path: 'timelinev2',
+        name: 'TimeLineV2',
+        component: TimeLinePageV2
       },
       {
         path: 'stats',
