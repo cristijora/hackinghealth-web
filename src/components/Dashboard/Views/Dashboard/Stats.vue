@@ -8,7 +8,7 @@
         </div>
         <div slot="footer">
           <el-alert
-            title="Se pare ca Sofia nu creste suficient!"
+            title="Se pare ca Filip nu creste suficient!"
             type="error"
             description="Asigura-te ca cantarul functioneaza, si ca copilul a fosit acelasi cantar pentru monitorizarea greutatii."
             class="animated infinite pulse"
@@ -29,7 +29,7 @@
         </div>
         <div slot="footer">
           <el-alert
-            title="Se pare ca Sofia este sub lmitita de greutate!"
+            title="Se pare ca Filip este sub lmitita de greutate!"
             type="error"
             description="Ar fi bine sa fie consultata de un medic pediatru.  Asigura-te ca cantarul functioneaza, si ca copilul a fosit acelasi cantar pentru monitorizarea greutatii."
             class="animated infinite pulse"

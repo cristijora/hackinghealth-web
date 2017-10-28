@@ -62,7 +62,7 @@ const routes = [
     children: [
       {
         path: 'children',
-        name: 'Children',
+        name: 'Copii mei',
         component: Overview
       },
       {
@@ -72,12 +72,12 @@ const routes = [
       },
       {
         path: 'timelinev2',
-        name: 'TimeLineV2',
+        name: 'Dezvoltare si investigatii',
         component: TimeLinePageV2
       },
       {
         path: 'stats',
-        name: 'Statistics',
+        name: 'Masuratori',
         component: Stats
       }
     ]

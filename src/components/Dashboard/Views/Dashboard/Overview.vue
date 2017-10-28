@@ -1,13 +1,11 @@
 <template>
   <div>
     <div class="">
-      <div class="col-xs-12">
+     <!-- <div class="col-xs-12">
         <h4><span class="text-info">Cod parinte: </span></h4>
-      </div>
+      </div>-->
       <div class="col-xs-12">
-        <el-button class="btn btn-fill btn-default" style="margin-bottom: 20px;" @click="addChild = !addChild">Add
-          child
-        </el-button>
+        <el-button class="btn btn-fill btn-default" style="margin-bottom: 20px;" @click="addChild = !addChild">Adauga copil</el-button>
       </div>
       <div class="row">
         <el-collapse-transition>
@@ -27,14 +25,14 @@
                 </div>
                 <el-form-item class="col-sm-6 col-xs-12">
               <span slot="label" class="text-danger">
-                Name
+                Nume
               </span>
                   <el-input v-model="newChild.name">
                   </el-input>
                 </el-form-item>
                 <el-form-item class="col-sm-6 col-xs-12">
                <span slot="label" class="text-danger">
-                Gender
+                Sex
                </span>
                   <el-select v-model="newChild.gender" placeholder="Select">
                     <el-option
@@ -49,7 +47,7 @@
                 <div class="row">
                 </div>
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Birth weight (kg)</span>
+                  <span slot="label" class="text-danger">Greutate nastere (kg)</span>
                   <el-input-number :value="newChild.birthWeight/1000"
                                    @change="(newValue) => child.birthWeight = newValue * 1000"
                                    :step="0.1">
@@ -57,23 +55,23 @@
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Birth height</span>
+                  <span slot="label" class="text-danger">Lungime nastere</span>
                   <el-input-number v-model="newChild.birthHeight"></el-input-number>
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Birth date</span>
+                  <span slot="label" class="text-danger">Ziua nasterii</span>
                   <el-date-picker v-model="newChild.birthDate" value-format="yyyy-MM-dd">
                   </el-date-picker>
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Current weight (cm)</span>
+                  <span slot="label" class="text-danger">Lungime actuala (cm)</span>
                   <el-input-number v-model="newChild.currentHeight"></el-input-number>
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Current weight (kg)</span>
+                  <span slot="label" class="text-danger">Greutate actuala (kg)</span>
                   <el-input-number :value="newChild.currentWeight/1000"
                                    @change="(newValue) => child.currentWeight = newValue * 1000"
                                    :step="0.1">
@@ -99,7 +97,7 @@
       </div>
 
       <div class="row">
-        <h4 style="padding-left: 15px;">My Children</h4>
+        <h4 style="padding-left: 15px;">Copii mei</h4>
         <transition-group name="list">
           <div class="col-sm-6 col-xs-12" v-for="child in children" :key="child._id">
             <div class="card card-user card-child">
@@ -108,35 +106,35 @@
               <el-form label-position="top" class="card-content row">
                 <div class="author">
                   <img class="avatar"
-                       src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png"
+                       src="static/img/baby_filip.png"
                        alt="...">
                   <h4 class="title text-info"><i
                     :class="child.gender === 'feminin'? 'fa fa-female' : 'fa fa-male text-success'"></i>{{child.name}}
                   </h4>
                 </div>
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Birth weight</span>
+                  <span slot="label" class="text-danger">Greutate nastere</span>
                   <span class="text-primary">{{child.birthWeight/1000}} kg</span>
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Birth height</span>
+                  <span slot="label" class="text-danger">Lungime nastere</span>
                   <span class="text-primary">{{child.birthHeight}} cm</span>
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Birth date</span>
+                  <span slot="label" class="text-danger">Ziua nasterii</span>
                   <el-date-picker v-model="child.birthDate" value-format="yyyy-MM-dd">
                   </el-date-picker>
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Current weight (cm)</span>
+                  <span slot="label" class="text-danger">Lungime actuala (cm)</span>
                   <el-input-number v-model="child.currentHeight"></el-input-number>
                 </el-form-item>
 
                 <el-form-item class="col-sm-6 col-xs-12">
-                  <span slot="label" class="text-danger">Current weight (kg)</span>
+                  <span slot="label" class="text-danger">Greutate actuala (kg)</span>
                   <el-input-number :value="child.currentWeight/1000"
                                    @change="(newValue) => child.currentWeight = newValue * 1000"
                                    :step="0.1">
