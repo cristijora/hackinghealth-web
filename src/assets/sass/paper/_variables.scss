@@ -41,12 +41,12 @@ $success-input-bg:           #ABF3CB !default;
 $other-medium-gray:          #A49E93 !default;
 $transparent-bg:             transparent !default;
 
-$default-color:              #89cff0 !default;
-$default-bg:                 #89cff0 !default;
-$default-states-color:       darken($default-color,11%) !default;
+$default-color:              darken(#89cff0, 15%) !default;
+$default-bg:                 darken(#89cff0, 15%) !default;
+$default-states-color:       darken($default-color,15%) !default;
 
-$primary-color:              #7A9E9F !default;
-$primary-bg:                 #7A9E9F !default;
+$primary-color:              #777 !default;
+$primary-bg:                 #777 !default;
 $primary-states-color:       darken($primary-color,11%) !default;
 
 $success-color:              #7AC29A !default;
@@ -62,9 +62,9 @@ $warning-bg:                 #e14d4d !default;
 $warning-states-color:       darken($warning-color,11%) !default;
 
 
-$danger-color:               #FF4081 !default;
-$danger-bg:                  #FF4081 !default;
-$danger-states-color:        #FF4081 !default;
+$danger-color:               darken($primary-color, 30%) !default;
+$danger-bg:                  darken($primary-color, 30%) !default;
+$danger-states-color:        darken($primary-color, 30%) !default;
 
 
 $link-disabled-color:        #666666 !default;

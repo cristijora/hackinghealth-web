@@ -1,30 +1,11 @@
 <template>
   <div class="row">
-    <div class="col-sm-6 col-xs-12">
-      <card>
-        <h5 slot="header"></h5>
-        <div>
-          <canvas id="heightChart" width="250" height="250"></canvas>
-        </div>
-        <div slot="footer">
-          <el-alert
-            title="Se pare ca Filip nu creste suficient!"
-            type="error"
-            description="Asigura-te ca cantarul functioneaza, si ca copilul a fosit acelasi cantar pentru monitorizarea greutatii."
-            class="animated infinite pulse"
-          >
-          </el-alert>
-          <el-row type="flex" justify="center" style="margin-top: 10px;">
-            <el-button type="success">Contacteaza un doctor!</el-button>
-          </el-row>
+    <h2 class="text-center">Măsurători <small>Filip</small></h2>
 
-        </div>
-      </card>
-    </div>
     <div class="col-sm-6 col-xs-12">
       <card>
         <h5 slot="header"></h5>
-        <div>
+        <div >
           <canvas id="weightChart" width="250" height="250"></canvas>
         </div>
         <div slot="footer">
@@ -36,10 +17,31 @@
           >
           </el-alert>
           <el-row type="flex" justify="center" style="margin-top: 10px;">
-            <el-button type="success">Contacteaza un doctor!</el-button>
+            <el-button type="danger">Contacteaza un doctor!</el-button>
           </el-row>
 
         </div>
+      </card>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <card>
+        <h5 slot="header"></h5>
+        <div>
+          <canvas id="heightChart" width="250" height="250"></canvas>
+        </div>
+        <!--<div slot="footer">
+          <el-alert
+            title="Se pare ca Filip nu creste suficient!"
+            type="error"
+            description="Asigura-te ca cantarul functioneaza, si ca copilul a fosit acelasi cantar pentru monitorizarea greutatii."
+            class="animated infinite pulse"
+          >
+          </el-alert>
+          &lt;!&ndash; <el-row type="flex" justify="center" style="margin-top: 10px;">
+             <el-button type="success">Contacteaza un doctor!</el-button>
+           </el-row>&ndash;&gt;
+
+        </div>-->
       </card>
     </div>
   </div>
@@ -51,6 +53,7 @@
   import ChartCard from 'src/components/UIComponents/Cards/ChartCard.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   import Chart from 'chart.js'
+  import api from 'src/api'
 
   var chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -70,9 +73,11 @@
       Card
     },
     data() {
-      return {}
+      return {
+        child: null
+      }
     },
-    mounted() {
+    async mounted() {
       var options = {
         type: 'line',
         data: {
@@ -80,11 +85,12 @@
           datasets: [
             {
               label: 'Greutate',
-              data: [2.6, 3, 3.2, 3.4, 3.2],
+              data: [2.6, 2.8, 2.95, 2.9, 2.85],
               borderWidth: 3,
               fill: false,
-              backgroundColor: '#89cff0',
-              borderColor: '#89cff0',
+              borderColor: '#777',
+              pointBorderColor: ['#777', '#777', '#777', '#777', '#fa5555'],
+              pointBackgroundColor: ['#777', '#777', '#777', '#777', '#fa5555']
             },
             {
               label: 'Limita inferioara',
@@ -93,6 +99,7 @@
               fill: 2,
               backgroundColor: 'rgba(116, 230, 152, 0.1)',
               borderColor: '#54b07d',
+              pointBackgroundColor: '#54b07d',
             },
             {
               label: 'Limita superioara',
@@ -101,6 +108,7 @@
               fill: false,
               backgroundColor: 'rgba(116, 230, 152, 0.1)',
               borderColor: '#54b07d',
+              pointBackgroundColor: '#54b07d',
             }
           ]
         },
@@ -135,11 +143,11 @@
           datasets: [
             {
               label: 'Inaltime',
-              data: [48, 49, 50, 51, 51],
+              data: [47, 51, 53.5, 56.1, 59],
               borderWidth: 3,
               fill: false,
-              backgroundColor: '#89cff0',
-              borderColor: '#89cff0',
+              backgroundColor: '#777',
+              borderColor: '#777',
             },
             {
               label: 'Limita inferioara',
@@ -148,6 +156,7 @@
               fill: 2,
               backgroundColor: 'rgba(116, 230, 152, 0.1)',
               borderColor: '#54b07d',
+              pointBackgroundColor: '#54b07d',
             },
             {
               label: 'Limita superioara',
@@ -156,6 +165,7 @@
               fill: false,
               backgroundColor: 'rgba(116, 230, 152, 0.1)',
               borderColor: '#54b07d',
+              pointBackgroundColor: '#54b07d',
             }
           ]
         },
@@ -163,7 +173,7 @@
           responsive: true,
           title: {
             display: true,
-            text: 'Grafic crestere',
+            text: 'Grafic inaltime',
             fontColor: '#89cff0',
             fontSize: 20
           },
@@ -182,7 +192,12 @@
         }
 
       }
-
+      var childData = await api.service('children').find()
+      var firstChild = childData.data[0]
+      /*if (firstChild && firstChild.currentWeight) {
+        options.datasets[0].data.push(firstChild.currentWeight)
+        heightOptions.datasets[0].data.push(firstChild.currentHeight)
+      }*/
       var ctx = document.getElementById('weightChart').getContext('2d')
       var ctx2 = document.getElementById('heightChart').getContext('2d')
       var myChart = new Chart(ctx, options)

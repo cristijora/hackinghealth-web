@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-minimize">
-        <button class="btn btn-fill btn-icon" @click="minimizeSidebar">
+        <button class="btn btn-icon btn-primary" @click="minimizeSidebar">
           <i :class="$sidebar.isMinimized ? 'ti-menu-alt' : 'ti-more-alt'"></i>
         </button>
       </div>
@@ -13,17 +13,20 @@
           <span class="icon-bar bar2"></span>
           <span class="icon-bar bar3"></span>
         </button>
-        <a class="navbar-brand">{{this.$route.name}}</a>
+        <a class="navbar-brand">Meniu</a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <drop-down tag="li" title="5" icon="ti-bell">
-            <li><a href="#">Notification 1</a></li>
-            <li><a href="#">Notification 2</a></li>
-            <li><a href="#">Notification 3</a></li>
-            <li><a href="#">Notification 4</a></li>
-            <li><a href="#">Another notification</a></li>
-          </drop-down>
+          <li>
+            <a>
+              <el-badge value="3">
+                <button class="btn btn-primary btn-icon">
+                  <i class="ti-bell"></i>
+                </button>
+              </el-badge>
+
+            </a>
+          </li>
           <li>
             <a style="cursor: pointer;" @click="logout">Logout</a>
           </li>
@@ -36,41 +39,43 @@
   import api from 'src/api'
 
   export default {
-    data () {
+    data() {
       return {
         activeNotifications: false
       }
     },
     methods: {
-      async logout () {
+      async logout() {
         await api.logout()
         this.$router.push('/login')
       },
-      capitalizeFirstLetter (string) {
+      capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
       },
-      toggleNotificationDropDown () {
+      toggleNotificationDropDown() {
         this.activeNotifications = !this.activeNotifications
       },
-      closeDropDown () {
+      closeDropDown() {
         this.activeNotifications = false
       },
-      toggleSidebar () {
+      toggleSidebar() {
         this.$sidebar.displaySidebar(!this.$sidebar.showSidebar)
       },
-      hideSidebar () {
+      hideSidebar() {
         this.$sidebar.displaySidebar(false)
       },
-      minimizeSidebar () {
+      minimizeSidebar() {
         this.$sidebar.toggleMinimize()
       }
     },
-    mounted () {
+    mounted() {
       this.minimizeSidebar()
     }
   }
 
 </script>
-<style>
-
+<style lang="scss">
+  .el-badge__content.is-fixed{
+    border: 0px;
+  }
 </style>
